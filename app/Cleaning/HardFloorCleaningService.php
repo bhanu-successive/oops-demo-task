@@ -9,7 +9,7 @@ use App\Cleaning\Contracts\IFloorCleaning;
  * Class HardFloorIFloorCleaningService
  * @package App\Cleaning
  */
-class HardFloorIFloorCleaningService implements IFloorCleaning
+class HardFloorCleaningService implements IFloorCleaning
 {
     /**
      * Takes 1 sec to cleaning 1 meter square

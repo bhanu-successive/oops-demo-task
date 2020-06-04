@@ -2,9 +2,6 @@
 
 namespace App;
 
-use App\Cleaning\CarpetFloorIFloorCleaningService;
-use App\Cleaning\HardFloorIFloorCleaningService;
-
 /**
  * Class FloorCleaning
  * @package App
@@ -43,13 +40,9 @@ class FloorCleaning
         }
 
         echo " \n ...... Initialise Cleaning service ..... ";
-        if (strtolower($this->floor) === 'hard') {
-            $this->cleaningInstance = new HardFloorIFloorCleaningService($this->area);
-        }
 
-        if (strtolower($this->floor) === 'carpet') {
-            $this->cleaningInstance = new CarpetFloorIFloorCleaningService($this->area);
-        }
+        $serviceClass = "App\Cleaning\\".ucfirst($this->floor).'FloorCleaningService';
+        $this->cleaningInstance = new $serviceClass($this->area);
     }
 
     public function startCleaning()
