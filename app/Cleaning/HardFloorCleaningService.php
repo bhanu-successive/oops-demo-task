@@ -46,14 +46,9 @@ class HardFloorCleaningService implements IFloorCleaning
         $area = $this->area;
 
         while( $area) {
-            $area = $area - ($this->robotInstance->getWorkTimeInOneCharge() / $this->cleaningTimePerMeterSquare);
-
-            if($area < 0) {
-                $area = 0;
-            }
             echo " \n Area remaining to be cleaned: ".$area. " mSq";
-
-            if ($area / ($this->robotInstance->getWorkTimeInOneCharge() / $this->cleaningTimePerMeterSquare)) {
+            $area = $area - ($this->robotInstance->getWorkTimeInOneCharge() / $this->cleaningTimePerMeterSquare);
+            if($area > 0) {
                 echo " \n Robot exhausted. Charging ... It will take ".$this->robotInstance->getFullChargeTime()." secs";
             }
         }
